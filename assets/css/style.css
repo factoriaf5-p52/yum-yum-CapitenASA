@@ -1,4 +1,9 @@
-/* -------------------------------- 
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+body {
+  font-family: 'Poppins', sans-serif !important;
+}
+/* --------------------------------
 
 Primary style
 
@@ -34,7 +39,7 @@ img {
   max-width: 100%;
 }
 
-/* -------------------------------- 
+/* --------------------------------
 
 Modules - reusable parts of our design
 
@@ -61,9 +66,9 @@ Modules - reusable parts of our design
   white-space: nowrap;
 }
 
-/* -------------------------------- 
+/* --------------------------------
 
-xheader 
+xheader
 
 -------------------------------- */
 header {
@@ -217,3 +222,5 @@ header {
 .no-js #main-nav {
   position: fixed;
 }
+
+/* Hero Part*/
