@@ -1,226 +1,126 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
-
-body {
-  font-family: 'Poppins', sans-serif !important;
-}
-/* --------------------------------
-
-Primary style
-
--------------------------------- */
-html * {
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-*, *:after, *:before {
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
+* {
   box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
-body {
-  font-size: 100%;
-  font-family: "PT Sans", sans-serif;
-  color: #31353d;
-  background-color: #eeeff7;
-}
-body.overflow-hidden {
-  /* prevent 2 vertical scrollbars on ie and firefox when the cart is visible */
-  overflow: hidden;
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 30px 10%;
+  background-color: #24252a;
 }
 
-a {
-  color: #435779;
+.logo {
+  cursor: pointer;
+}
+
+.nav__links a,
+.cta,
+.overlay__content a {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 500;
+  color: #edf0f1;
   text-decoration: none;
 }
 
-img {
-  max-width: 100%;
+.nav__links {
+  list-style: none;
+  display: flex;
 }
 
-/* --------------------------------
-
-Modules - reusable parts of our design
-
--------------------------------- */
-.cd-container {
-  /* this class is used to horizontally align the gallery of items */
-  position: relative;
-  width: 90%;
-  max-width: 1200px;
-  margin: 0 auto;
-}
-.cd-container::after {
-  /* clearfix */
-  content: "";
-  display: table;
-  clear: both;
+.nav__links li {
+  padding: 0px 20px;
 }
 
-.cd-img-replace {
-  /* replace text with a background-image */
-  display: inline-block;
-  overflow: hidden;
-  text-indent: 100%;
-  white-space: nowrap;
+.nav__links li a {
+  transition: color 0.3s ease 0s;
 }
 
-/* --------------------------------
+.nav__links li a:hover {
+  color: #0088a9;
+}
 
-xheader
+.cta {
+  padding: 9px 25px;
+  background-color: rgba(0, 136, 169, 1);
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: background-color 0.3s ease 0s;
+}
 
--------------------------------- */
-header {
+.cta:hover {
+  background-color: rgba(0, 136, 169, 0.8);
+}
+
+/* Mobile Nav */
+
+.menu {
+  display: none;
+}
+
+.overlay {
+  height: 100%;
+  width: 0;
   position: fixed;
-  top: 0;
+  z-index: 1;
   left: 0;
-  height: 50px;
-  width: 100%;
-  background: #31353d;
-  text-align: center;
-  box-shadow: 0 2px 0 rgba(0, 0, 0, 0.1);
-  z-index: 4;
-}
-@media only screen and (min-width: 1200px) {
-  header {
-    height: 80px;
-  }
-}
-
-#logo {
-  padding-top: 5px;
-  /* delete this property if you don't want your logo to scale down on mobile devices */
-  -webkit-transform: scale(0.8);
-  -moz-transform: scale(0.8);
-  -ms-transform: scale(0.8);
-  -o-transform: scale(0.8);
-  transform: scale(0.8);
-}
-@media only screen and (min-width: 1200px) {
-  #logo {
-    padding-top: 20px;
-    position: absolute;
-    /* logo left margin on Dekstop */
-    left: 2.4em;
-    top: 0;
-    -webkit-transform: scale(1);
-    -moz-transform: scale(1);
-    -ms-transform: scale(1);
-    -o-transform: scale(1);
-    transform: scale(1);
-  }
-}
-
-#cd-hamburger-menu {
-  position: absolute;
   top: 0;
-  height: 100%;
-}
-#cd-hamburger-menu a{
-  width: 60px;
-  height: 100%;
+  background-color: #24252a;
+  overflow-x: hidden;
+  transition: width 0.5s ease 0s;
 }
 
-#cd-hamburger-menu {
-  right: 0;
+.overlay--active {
+  width: 100%;
 }
-#cd-hamburger-menu a {
-  background: #26292f url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/148866/cd-hamburger-menu.svg") no-repeat center center;
+
+.overlay__content {
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
-@media only screen and (min-width: 1200px) {
-  #cd-hamburger-menu {
+
+.overlay a {
+  padding: 15px;
+  font-size: 36px;
+  display: block;
+  transition: color 0.3s ease 0s;
+}
+
+.overlay a:hover,
+.overlay a:focus {
+  color: #0088a9;
+}
+.overlay .close {
+  position: absolute;
+  top: 20px;
+  right: 45px;
+  font-size: 60px;
+  color: #edf0f1;
+}
+
+@media screen and (max-height: 450px) {
+  .overlay a {
+    font-size: 20px;
+  }
+  .overlay .close {
+    font-size: 40px;
+    top: 15px;
+    right: 35px;
+  }
+}
+
+@media only screen and (max-width: 800px) {
+  .nav__links,
+  .cta {
     display: none;
   }
-}
-
-
-#main-nav {
-  position: fixed;
-  top: 0;
-  height: 100%;
-  width: 260px;
-  /* header height */
-  padding-top: 50px;
-  overflow-y: auto;
-  -webkit-overflow-scrolling: touch;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
-  z-index: 3;
-}
-@media only screen and (min-width: 768px) {
-  #main-nav {
-    width: 350px;
+  .menu {
+    display: initial;
   }
 }
-@media only screen and (min-width: 1200px) {
-  #main-nav {
-    width: 30%;
-    /* header height has changed */
-    padding-top: 80px;
-  }
-}
-
-#main-nav {
-  left: -100%;
-  background: #FFF;
-  -webkit-transition: left 0.3s;
-  -moz-transition: left 0.3s;
-  transition: left 0.3s;
-}
-#main-nav.speed-in {
-  left: 0;
-}
-#main-nav ul a {
-  display: block;
-  height: 50px;
-  line-height: 50px;
-  padding: 0 1em;
-  border-bottom: 1px solid #e0e6ef;
-}
-#main-nav ul .current {
-  box-shadow: inset 3px 0 #435779;
-}
-@media only screen and (min-width: 1200px) {
-  #main-nav {
-    /* reset main nav style */
-    position: absolute;
-    height: auto;
-    width: auto;
-    left: auto;
-    right: 8em;
-    padding-top: 0;
-    top: 0;
-    background: transparent;
-    box-shadow: none;
-    /* header height */
-    line-height: 80px;
-    z-index: 4;
-  }
-  #main-nav li {
-    display: inline-block;
-    margin-left: 1em;
-  }
-  #main-nav ul a {
-    display: inline-block;
-    height: auto;
-    line-height: 1;
-    padding: 1em 1.4em;
-    border-bottom: none;
-    color: rgba(255, 255, 255, 0.8);
-    border-radius: 0.25em;
-  }
-  #main-nav ul a.current {
-    box-shadow: none;
-    background: #435779;
-    color: #FFF;
-  }
-  .no-touch #main-nav ul a:hover {
-    background: #435779;
-    color: #FFF;
-  }
-}
-.no-js #main-nav {
-  position: fixed;
-}
-
-/* Hero Part*/
